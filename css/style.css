@@ -1,0 +1,413 @@
+/* ==========================================================================
+   Design tokens
+   Change colors and fonts here; everything else reads from these variables.
+   ========================================================================== */
+:root {
+  --c-bg: #0b0d12;
+  --c-surface: #12161e;
+  --c-surface-2: #181d27;
+  --c-border: #242a36;
+  --c-text: #e6e9ef;
+  --c-muted: #98a2b3;
+  --c-accent: #2dd4bf;
+  --c-accent-rgb: 45, 212, 191;
+  --c-on-accent: #04201c;
+
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --nav-height: 72px;
+  --radius: 14px;
+}
+
+/* Map our tokens onto Bootstrap's own variables */
+:root[data-bs-theme="dark"] {
+  --bs-body-bg: var(--c-bg);
+  --bs-body-color: var(--c-text);
+  --bs-body-font-family: var(--font-body);
+  --bs-secondary-color: var(--c-muted);
+  --bs-border-color: var(--c-border);
+  --bs-link-color: var(--c-accent);
+  --bs-link-color-rgb: var(--c-accent-rgb);
+  --bs-link-hover-color: var(--c-text);
+  --bs-link-hover-color-rgb: 230, 233, 239;
+  --bs-emphasis-color: #fff;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6,
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: rgba(var(--c-accent-rgb), 0.3);
+}
+
+section[id],
+header[id] {
+  scroll-margin-top: var(--nav-height);
+}
+
+.section {
+  padding-block: 6rem;
+}
+
+.text-muted-soft {
+  color: var(--c-muted);
+}
+
+/* Small monospace label above section titles, e.g. "// 01 · projects" */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--c-accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.65rem 1.25rem;
+}
+
+.btn-accent {
+  --bs-btn-bg: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-color: var(--c-on-accent);
+  --bs-btn-hover-bg: #5eead4;
+  --bs-btn-hover-border-color: #5eead4;
+  --bs-btn-hover-color: var(--c-on-accent);
+  --bs-btn-active-bg: #14b8a6;
+  --bs-btn-active-border-color: #14b8a6;
+  --bs-btn-active-color: var(--c-on-accent);
+}
+
+.btn-ghost {
+  --bs-btn-color: var(--c-text);
+  --bs-btn-border-color: var(--c-border);
+  --bs-btn-hover-bg: var(--c-surface-2);
+  --bs-btn-hover-border-color: var(--c-muted);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--c-surface-2);
+  --bs-btn-active-border-color: var(--c-muted);
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+.site-nav {
+  min-height: var(--nav-height);
+  background: rgba(11, 13, 18, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.site-nav.is-scrolled {
+  background: rgba(11, 13, 18, 0.9);
+  border-bottom-color: var(--c-border);
+}
+
+.site-nav .navbar-brand {
+  font-size: 1.15rem;
+}
+
+.site-nav .navbar-brand span {
+  color: var(--c-accent);
+}
+
+.site-nav .nav-link {
+  color: var(--c-muted);
+  font-weight: 500;
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus {
+  color: var(--c-text);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--nav-height) + 3rem);
+  padding-bottom: 4rem;
+  overflow: hidden;
+}
+
+/* Faint grid + accent glow in the background */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 75% 30%, rgba(var(--c-accent-rgb), 0.12), transparent 45%),
+    linear-gradient(var(--c-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--c-border) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero > .container {
+  position: relative;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  line-height: 1.05;
+}
+
+.hero .role {
+  font-family: var(--font-mono);
+  color: var(--c-accent);
+}
+
+.hero .intro {
+  max-width: 38rem;
+  font-size: 1.1rem;
+  color: var(--c-muted);
+}
+
+.profile-photo {
+  width: min(280px, 70vw);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--c-surface-2);
+  box-shadow: 0 0 0 6px rgba(var(--c-accent-rgb), 0.25), 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  color: var(--c-muted);
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.social-links a:hover {
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+}
+
+/* ==========================================================================
+   Tags (used on cards, filters and project pages)
+   ========================================================================== */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  color: var(--c-accent);
+  background: rgba(var(--c-accent-rgb), 0.08);
+  border: 1px solid rgba(var(--c-accent-rgb), 0.2);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Filter buttons above the project grid */
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  color: var(--c-muted);
+  background: transparent;
+  border: 1px solid var(--c-border);
+  transition: all 0.15s;
+}
+
+.filter-btn:hover {
+  color: var(--c-text);
+  border-color: var(--c-muted);
+}
+
+.filter-btn[aria-pressed="true"] {
+  color: var(--c-on-accent);
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+}
+
+/* ==========================================================================
+   Project cards (index)
+   ========================================================================== */
+.project-card {
+  position: relative;
+  height: 100%;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--c-accent-rgb), 0.5);
+}
+
+.project-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.project-card .card-body {
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.project-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.project-card .stretched-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-card .meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--c-muted);
+}
+
+/* ==========================================================================
+   Project page
+   ========================================================================== */
+.project-header {
+  padding-top: calc(var(--nav-height) + 3rem);
+  padding-bottom: 2rem;
+}
+
+.project-header h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--c-accent);
+}
+
+.project-media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.project-media img,
+.project-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-content h2 {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.project-content h2:first-child {
+  margin-top: 0;
+}
+
+.project-content p,
+.project-content li {
+  color: #c4cad4;
+  line-height: 1.75;
+}
+
+.project-content pre {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.details-panel {
+  position: sticky;
+  top: calc(var(--nav-height) + 1.5rem);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.details-panel dt {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-muted);
+}
+
+.details-panel dd {
+  margin-bottom: 1rem;
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--c-border);
+}
+
+/* ==========================================================================
+   Contact + footer
+   ========================================================================== */
+.contact-box {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: 3rem 1.5rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--c-border);
+  padding-block: 2rem;
+  font-size: 0.9rem;
+  color: var(--c-muted);
+}
