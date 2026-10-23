@@ -62,7 +62,7 @@ header[id] {
   color: var(--c-muted);
 }
 
-/* Small monospace label above section titles, e.g. "// 01 · projects" */
+/* Small monospace label above section titles, e.g. "// 01 projects" */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.85rem;

@@ -35,7 +35,7 @@ function renderProjects(activeTag) {
         <article class="project-card">
           <img src="${p.thumbnail}" alt="${p.title} screenshot" loading="lazy">
           <div class="card-body">
-            <p class="meta mb-2">${p.year} · ${p.team}</p>
+            <p class="meta mb-2">${p.year} / ${p.team}</p>
             <h3><a href="${p.url}" class="stretched-link">${p.title}</a></h3>
             <p class="text-muted-soft mb-3">${p.summary}</p>
             <ul class="tag-list">
@@ -49,7 +49,7 @@ function renderProjects(activeTag) {
 }
 
 function renderFilters() {
-  const tags = [...new Set(PROJECTS.flatMap((p) => p.tags))];
+  const tags = TAGS.filter((t) => PROJECTS.some((p) => p.tags.includes(t)));
   const buttons = ["All", ...tags].map(
     (tag, i) =>
       `<button type="button" class="filter-btn" data-tag="${i === 0 ? "" : tag}" aria-pressed="${i === 0}">${tag}</button>`

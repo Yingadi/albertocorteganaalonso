@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Untitled Platformer | Alberto Cortegana Alonso</title>
+  <meta name="description" content="Untitled Platformer: a 2D precision platformer with a custom character controller.">
+
+  <!-- Favicon: SVG for modern browsers, PNG fallback, and the iOS home screen icon -->
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<!-- data-project must match the project's slug in js/projects.js -->
+<body data-root="../" data-project="untitled-platformer">
+
+  <!-- Dot grid background (parallax on scroll, see js/main.js) -->
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md fixed-top site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Alberto Cortegana<span>.</span></a>
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
+      <!-- Mobile: side panel from the right. From md up: regular inline links -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="main-nav" aria-label="Menu">
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 align-items-md-center gap-md-3">
+            <li class="nav-item"><a class="nav-link" href="../index.html#work">Work</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contact</a></li>
+            <li class="nav-item"><a class="btn btn-ghost" href="../assets/cv.pdf" target="_blank" rel="noopener">CV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Title -->
+  <header class="project-header">
+    <div class="container">
+      <a href="../index.html#work" class="back-link">← Level select</a>
+      <p class="label d-flex" data-level-number>Level</p>
+      <h1>Untitled Platformer</h1>
+      <p class="lead text-muted-soft mb-4" style="max-width: 40rem;">
+        A 2D precision platformer with a custom character controller and tight, responsive movement.
+      </p>
+      <ul class="tag-list">
+        <li class="tag">Gameplay</li>
+        <li class="tag">Character controller</li>
+        <li class="tag">Tools</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main media: swap the <img> for a <video controls>, a YouTube <iframe> or an itch.io/WebGL <iframe> -->
+  <div class="container">
+    <div class="project-media ratio ratio-16x9">
+      <img src="../assets/img/projects/placeholder.svg" alt="Untitled Platformer gameplay">
+    </div>
+
+    <!-- Specs + links -->
+    <dl class="spec-strip mt-4">
+      <div><dt>Role</dt><dd>Gameplay Programmer</dd></div>
+      <div><dt>Engine</dt><dd>Unity 6</dd></div>
+      <div><dt>Language</dt><dd>C#</dd></div>
+      <div><dt>Team</dt><dd>Solo</dd></div>
+      <div><dt>Duration</dt><dd>3 months</dd></div>
+      <div><dt>Platform</dt><dd>PC, WebGL</dd></div>
+    </dl>
+    <div class="d-flex flex-wrap gap-3 mt-4">
+      <a href="https://itch.io/" class="btn btn-accent" target="_blank" rel="noopener">Play on itch.io ↗</a>
+      <!-- Hidden by default: remove "hidden" and set the link to show it -->
+      <a href="https://github.com/" class="btn btn-ghost" target="_blank" rel="noopener" hidden>Source code ↗</a>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <main class="container section">
+    <div class="prose">
+      <h2>Overview</h2>
+      <p>
+        What the game is, the core idea and the context it was made in (university course, game jam,
+        personal project). Two or three short paragraphs is enough.
+      </p>
+
+      <h2>What I did</h2>
+      <ul>
+        <li>Designed and programmed the character controller (coyote time, jump buffering, variable jump height).</li>
+        <li>Built a checkpoint and save system.</li>
+        <li>Created editor tools to speed up level design.</li>
+      </ul>
+
+      <h2>Technical highlights</h2>
+      <p>Explain one or two interesting problems and how you solved them. A short code snippet helps.</p>
+<pre><code>// Jump buffering: remember the jump input for a short time
+if (Input.GetButtonDown("Jump")) jumpBufferTimer = jumpBufferTime;
+else jumpBufferTimer -= Time.deltaTime;
+
+if (jumpBufferTimer > 0f &amp;&amp; coyoteTimer > 0f) Jump();</code></pre>
+
+      <h2>Gallery</h2>
+    </div>
+    <div class="row g-3 gallery">
+      <div class="col-md-6"><img src="../assets/img/projects/placeholder.svg" alt="Screenshot 1" loading="lazy"></div>
+      <div class="col-md-6"><img src="../assets/img/projects/placeholder.svg" alt="Screenshot 2" loading="lazy"></div>
+      <div class="col-md-6"><img src="../assets/img/projects/placeholder.svg" alt="Screenshot 3" loading="lazy"></div>
+      <div class="col-md-6"><img src="../assets/img/projects/placeholder.svg" alt="Screenshot 4" loading="lazy"></div>
+    </div>
+  </main>
+
+  <!-- Filled in by js/main.js from the project list -->
+  <nav class="next-level" aria-label="Next project">
+    <div class="container" id="next-level"></div>
+  </nav>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>© <span data-year></span> Alberto Cortegana Alonso</span>
+      <a href="../index.html" class="text-reset text-decoration-none">Back to home</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="../js/projects.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
