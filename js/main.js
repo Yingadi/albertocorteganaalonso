@@ -198,8 +198,13 @@ function renderFilters() {
 }
 
 if (levelList && typeof PROJECTS !== "undefined") {
-  if (levelFilters) renderFilters();
-  renderLevels();
+  if (PROJECTS.length === 0) {
+    // No projects yet: no filters or count, just a short note
+    levelList.innerHTML = `<p class="level-empty">Projects coming soon.</p>`;
+  } else {
+    if (levelFilters) renderFilters();
+    renderLevels();
+  }
 }
 
 // ---------------------------------------------------------------------------

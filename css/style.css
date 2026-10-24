@@ -542,6 +542,16 @@ header[id] {
   padding-block: 3rem;
 }
 
+/* Shown instead of the list while js/projects.js has no projects */
+.level-empty {
+  border-top: 1px solid var(--c-border);
+  padding-block: 3rem;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--c-muted);
+}
+
 .level-link {
   color: inherit;
   text-decoration: none;
