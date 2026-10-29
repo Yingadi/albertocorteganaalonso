@@ -8,6 +8,11 @@
   Loaded in <head> so the entrance animation is chosen before the page is painted.
   With "reduce motion" turned on in the system, nothing here runs and pages change instantly.
 */
+// Tells the CSS that JavaScript is running, so the scroll reveal (js/main.js) can hide blocks until
+// they come into view. Set here, before the first paint, so nothing shows and then disappears.
+// Without JavaScript the class is never added and everything is simply visible.
+document.documentElement.classList.add("js");
+
 (() => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 

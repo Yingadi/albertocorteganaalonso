@@ -1,7 +1,7 @@
 /*
   Project list shown on the home page, in this order.
-  To add a project: add an object here and create its page in /projects by copying
-  projects/_template.html ("url" points to that page).
+  To add a project: add an object here and create its page in /projects by copying an existing
+  project page ("url" points to that page). Also add the page to sitemap.xml and llms.txt.
 
   summary:   one short line (under ~15 words). The card shows: summary, role, "engine / year / team".
              Any of these can be left as "" and it's simply not shown.
@@ -30,7 +30,7 @@
 */
 // Filter buttons above the list, in this order. Each one shows how many projects have
 // that tag (a project can have several). A tag with no projects is not shown.
-const TAGS = ["Unity", "Unreal Engine", "C++", "OpenGL", "Game Jam"];
+const TAGS = ["Unity", "Unreal Engine", "C++", "Graphics Programming", "Game Jam"];
 
 const PROJECTS = [
   {
@@ -58,5 +58,18 @@ const PROJECTS = [
     thumbnail: "assets/video/procedural-voxel-game/poster.jpg",
     preview: "assets/video/procedural-voxel-game/preview.mp4",
     url: "projects/procedural-voxel-game.html",
+  },
+  {
+    slug: "edk-engine",
+    title: "EDK Engine Reimplementation",
+    summary: "Core modules of my school's C++/OpenGL engine, rewritten by us and used to build a 3D scene.",
+    role: "Graphics & Engine Programmer",
+    engine: "C++, OpenGL",
+    year: 2026,
+    team: "Team of 3",
+    tags: ["C++", "Graphics Programming"],
+    thumbnail: "assets/video/edk-engine/poster.jpg",
+    preview: "assets/video/edk-engine/preview.mp4",
+    url: "projects/edk-engine.html",
   },
 ];

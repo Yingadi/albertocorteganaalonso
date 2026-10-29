@@ -6,6 +6,7 @@
 
 - [Puppeteers](https://albertocortegana.com/projects/puppeteers.html): online co-op 3D puzzle-platformer in Unreal Engine 5 and C++, team of 3. Online sessions with Epic Online Services, lobby system and session browser, replicated ragdoll, replicated sprint VFX.
 - [Procedural Voxel Game](https://albertocortegana.com/projects/procedural-voxel-game.html): infinite Minecraft-style voxel world in Unity 6 and C#, made solo in 10 days for the AEVI DevContest. Chunked terrain from 2D Perlin noise with face culling, caves and ore veins from 3D Perlin noise, physics-free player movement, real-time terrain editing, seeds.
+- [EDK Engine Reimplementation](https://albertocortegana.com/projects/edk-engine.html): core modules of ESAT's C++/OpenGL teaching engine rewritten by a team of 3 and used to build a 3D scene. Fly camera, post-processing pipeline (underwater effect), particle system, Dear ImGui debugging tools, GPU and memory management.
 
 ## Contact
 

@@ -82,7 +82,9 @@ document.querySelectorAll("[data-year]").forEach((el) => {
 // ---------------------------------------------------------------------------
 // Clips: <video class="clip"> behaves like a GIF. It plays muted and looping while it's on
 // screen and pauses when it scrolls away, so only the visible ones use resources.
-// With "reduce motion" turned on in the system, it stays still on its poster/first frame.
+// With "reduce motion" turned on in the system (common on school/office PCs with Windows
+// animations disabled), clips don't play on their own: on project pages they get the player
+// controls so they can still be watched; the home page cards show their poster.
 // ---------------------------------------------------------------------------
 const clipObserver = reduceMotion
   ? null
@@ -97,11 +99,31 @@ const clipObserver = reduceMotion
 function setupClips(root = document) {
   root.querySelectorAll("video.clip").forEach((video) => {
     video.muted = true; // required for autoplay on mobile browsers
-    clipObserver?.observe(video);
+    if (clipObserver) clipObserver.observe(video);
+    else if (!video.closest("a")) video.controls = true; // inside a card link, a click opens the project instead
   });
 }
 
 setupClips();
+
+// ---------------------------------------------------------------------------
+// Scroll reveal: blocks marked with data-reveal fade in and rise a little the first time they
+// come into view (styles in css/style.css, "Scroll reveal"). With "reduce motion" they only fade.
+// ---------------------------------------------------------------------------
+const revealObserver = new IntersectionObserver(
+  (entries) => entries.forEach(({ target, isIntersecting, boundingClientRect }) => {
+    // Blocks already above the screen (e.g. coming back halfway down the home page) show at once
+    if (isIntersecting || boundingClientRect.top < 0) {
+      target.classList.add("is-revealed");
+      revealObserver.unobserve(target);
+    }
+  }),
+  { threshold: 0.15 }
+);
+
+function setupReveal(root = document) {
+  root.querySelectorAll("[data-reveal]:not(.is-revealed)").forEach((el) => revealObserver.observe(el));
+}
 
 // ---------------------------------------------------------------------------
 // Project list (home page)
@@ -129,7 +151,7 @@ function levelTemplate(p, reverse) {
   const id = p.slug.replace(/[^a-z0-9-]/gi, "-");
 
   return `
-    <article class="level" style="view-transition-name: level-${id}">
+    <article class="level" data-reveal style="view-transition-name: level-${id}">
       <a href="${p.url}" class="level-link row g-4 g-xl-5 align-items-center">
         <div class="col-lg-7 ${reverse ? "order-lg-2" : ""}">
           <div class="level-media">${levelMedia(p)}</div>
@@ -150,6 +172,8 @@ function renderLevels(activeTag) {
 
   levelList.querySelectorAll("video.clip").forEach((v) => clipObserver?.unobserve(v));
   levelList.innerHTML = visible.map((p, pos) => levelTemplate(p, pos % 2 === 1)).join("");
+  // After a filter change the cards are already on screen: show them now, the filter has its own animation
+  if (activeTag !== undefined) levelList.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("is-revealed"));
   const pad = (n) => String(n).padStart(2, "0");
   document.querySelectorAll("[data-project-count]").forEach((el) => {
     el.textContent = activeTag
@@ -209,6 +233,8 @@ if (levelList && typeof PROJECTS !== "undefined") {
     renderLevels();
   }
 }
+
+setupReveal();
 
 // Home page scroll position. Coming back from a project ("← All projects" or the browser's back
 // button) puts the visitor exactly where they were. Arriving with an anchor instead

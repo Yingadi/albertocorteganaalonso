@@ -923,6 +923,11 @@ html.page-leave-back body > :not(.site-nav, .bg-grid, .skip-link) {
   background: var(--c-surface);
 }
 
+/* For clips recorded from a 4:3 window (e.g. the EDK engine) */
+.clip-frame-4x3 {
+  aspect-ratio: 4 / 3;
+}
+
 .clip-frame video,
 .clip-frame img {
   display: block;
@@ -941,6 +946,34 @@ html.page-leave-back body > :not(.site-nav, .bg-grid, .skip-link) {
   color: #c9c9cf;
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+/* ==========================================================================
+   Scroll reveal (js/main.js): blocks with data-reveal fade in and rise 24px the first time
+   they come into view. Only with JavaScript running (the "js" class), so nothing stays hidden
+   without it. data-reveal-delay="1" makes a block follow its neighbour a moment later.
+   ========================================================================== */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.js [data-reveal-delay="1"] {
+  transition-delay: 0.12s;
+}
+
+/* "Reduce motion": no movement, just the fade, which still shows that something appeared */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    transform: none;
+    transition: opacity 0.4s ease;
+  }
 }
 
 /* ==========================================================================

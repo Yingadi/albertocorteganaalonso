@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EDK Engine Reimplementation | Alberto Cortegana Alonso</title>
+  <meta name="description" content="EDK Engine Reimplementation: core modules of my school's C++/OpenGL engine rewritten by a team of three and used to build a 3D scene.">
+
+  <!-- Canonical address and share preview (LinkedIn, WhatsApp, Discord...) -->
+  <link rel="canonical" href="https://albertocortegana.com/projects/edk-engine.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alberto Cortegana Alonso">
+  <meta property="og:title" content="EDK Engine Reimplementation | Alberto Cortegana Alonso">
+  <meta property="og:description" content="EDK Engine Reimplementation: core modules of my school's C++/OpenGL engine rewritten by a team of three and used to build a 3D scene.">
+  <meta property="og:url" content="https://albertocortegana.com/projects/edk-engine.html">
+  <meta property="og:image" content="https://albertocortegana.com/assets/video/edk-engine/main-poster.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon: SVG for modern browsers, PNG fallback, and the iOS home screen icon -->
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+  <!-- Fonts: self-hosted (css/fonts.css), the main one preloaded so text doesn't swap late -->
+  <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/fonts.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Page transitions: in <head> so the entrance animation is set before the page is painted -->
+  <script src="../js/page-transition.js"></script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Dot grid background (parallax on scroll, see js/main.js) -->
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md fixed-top site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Alberto Cortegana<span>.</span></a>
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
+      <!-- Mobile: side panel from the right. From md up: regular inline links -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="main-nav" aria-label="Menu">
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 align-items-md-center gap-md-3">
+            <li class="nav-item"><a class="nav-link" href="../index.html#work">Work</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contact</a></li>
+            <li class="nav-item"><a class="btn btn-ghost" href="../assets/Alberto-Cortegana-Alonso-CV.pdf" target="_blank" rel="noopener">CV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <!-- Title -->
+  <header class="project-header">
+    <div class="container">
+      <a href="../index.html#work" class="back-link">← All projects</a>
+      <h1>EDK Engine Reimplementation</h1>
+      <p class="lead text-muted-soft mb-0" style="max-width: 40rem;">
+        Core modules of my school's C++/OpenGL engine, rewritten by us and used to build a 3D scene.
+      </p>
+      <p class="project-role">Graphics &amp; Engine Programmer</p>
+      <p class="project-meta">C++, OpenGL / Team of 3 / 2026</p>
+    </div>
+  </header>
+
+  <!-- Main media. The poster is shown while the video loads -->
+  <div class="container">
+    <div class="project-media ratio ratio-16x9">
+      <video class="clip" src="../assets/video/edk-engine/main.mp4" poster="../assets/video/edk-engine/main-poster.jpg" preload="metadata"
+             muted loop playsinline disablepictureinpicture disableremoteplayback
+             aria-label="Flying over the EDK demo scene"></video>
+    </div>
+
+    <!-- Links: add buttons here if there's a playable build or a video, e.g.
+         <div class="d-flex flex-wrap gap-3 mt-4">
+           <a href="https://..." class="btn btn-accent" target="_blank" rel="noopener">Play on itch.io ↗</a>
+         </div> -->
+  </div>
+
+  <!-- Content -->
+  <div class="container section">
+    <div class="prose" data-reveal>
+      <h2>Overview</h2>
+      <p>
+        EDK is a small engine written in C++ and OpenGL that ESAT gives its students to learn graphics programming.
+        During the course we replace its modules one by one with our own rewritten versions, and at the end we
+        use our version of the engine to build a 3D scene.
+      </p>
+      <p>
+        We were a team of three. The scene is a terrain with lakes, clouds, a skybox and rain,
+        and I worked mainly on the camera, the post-processing, the particles, the debugging tools and the way
+        the engine manages GPU resources and memory.
+      </p>
+
+      <h2>What I did</h2>
+    </div>
+
+    <!-- One block per feature: clip + short explanation. These clips keep the engine window's 4:3 shape -->
+    <div class="features">
+      <article data-reveal class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="clip-frame clip-frame-4x3">
+            <video class="clip" src="../assets/video/edk-engine/camera.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Flying around the scene with the free camera"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Fly camera</h3>
+          <p>
+            A free-flying camera to move around the scene and look at it from any angle. It's how the whole
+            scene, and every other feature on this page, gets explored.
+          </p>
+        </div>
+      </article>
+      <article data-reveal class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7 order-lg-2">
+          <div class="clip-frame clip-frame-4x3">
+            <video class="clip" src="../assets/video/edk-engine/postfx.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Pixelated, underwater, CRT and inverted effects switched on from the ImGui panel"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Post-processing pipeline</h3>
+          <p>
+            The scene is first rendered into an off-screen texture, and then goes through full-screen effects
+            before reaching the screen. Effects can be stacked and switched on and off while the scene runs.
+            I built the pipeline and the underwater effect (wavy distortion with a tint colour that can be
+            changed live). The clip also shows other effects running on it: pixelation, a CRT TV look and
+            colour inversion.
+          </p>
+        </div>
+      </article>
+      <article data-reveal class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="clip-frame clip-frame-4x3">
+            <video class="clip" src="../assets/video/edk-engine/particles.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Rain particles over the terrain"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Particle system</h3>
+          <p>
+            A particle system with adjustable spawn rate, size, speed and colour, used in the scene for rain.
+          </p>
+        </div>
+      </article>
+      <article data-reveal class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7 order-lg-2">
+          <div class="clip-frame clip-frame-4x3">
+            <video class="clip" src="../assets/video/edk-engine/imgui.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Changing the rain colour from the ImGui panel"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>ImGui debugging tools</h3>
+          <p>
+            Dear ImGui integrated into the engine, with panels to tweak the scene while it's running: camera,
+            render mode, post-processing effects and their presets, clouds, sky and particles.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <div class="prose mt-5" data-reveal>
+      <h3>GPU and memory management</h3>
+      <p>
+        I rewrote the GPU manager, the class between the engine and OpenGL that makes sure everything reaches
+        the GPU and renders correctly, along with the texture class it relies on. Most of it is CPU-GPU
+        communication: wrapping OpenGL calls and preparing the buffers and textures the scene needs.
+      </p>
+    </div>
+
+    <!-- Optional sections to add later: "Technical highlights" (an interesting problem and how
+         you solved it, with a short code snippet) and a screenshot "Gallery" -->
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>© <span data-year></span> Alberto Cortegana Alonso</span>
+      <a href="../index.html" class="text-reset text-decoration-none">Back to home</a>
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
