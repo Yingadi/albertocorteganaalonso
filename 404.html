@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | Alberto Cortegana Alonso</title>
+  <meta name="robots" content="noindex">
+
+
+  <!-- Favicon: SVG for modern browsers, PNG fallback, and the iOS home screen icon -->
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <!-- Fonts: self-hosted (css/fonts.css), the main one preloaded so text doesn't swap late -->
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/fonts.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Page transitions: in <head> so the entrance animation is set before the page is painted -->
+  <script src="/js/page-transition.js"></script>
+
+  <!-- Vercel serves this page for any address that doesn't exist, at any depth,
+       so every link and file here starts with "/" (from the site root) -->
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Dot grid background (parallax on scroll, see js/main.js) -->
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md fixed-top site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="/">Alberto Cortegana<span>.</span></a>
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
+      <!-- Mobile: side panel from the right. From md up: regular inline links -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="main-nav" aria-label="Menu">
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 align-items-md-center gap-md-3">
+            <li class="nav-item"><a class="nav-link" href="/#work">Work</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+            <li class="nav-item"><a class="btn btn-ghost" href="/assets/Alberto-Cortegana-Alonso-CV.pdf" target="_blank" rel="noopener">CV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main" class="error-page">
+    <div class="container">
+      <!-- "404" with a skull as the 0 (Lucide "skull" icon, ISC license) -->
+      <p class="error-code" aria-hidden="true">
+        <span>4</span>
+        <svg class="error-skull" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12.5 17-.5-1-.5 1h1z" />
+          <path d="M15 22a1 1 0 0 0 1-1v-1a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20v1a1 1 0 0 0 1 1z" />
+          <circle cx="15" cy="12" r="1" />
+          <circle cx="9" cy="12" r="1" />
+        </svg>
+        <span>4</span>
+      </p>
+      <h1>Game over</h1>
+      <p class="error-text">Error 404: this page doesn't exist, or it has moved.</p>
+      <p class="error-continue">Continue?</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="/" class="btn btn-accent">Yes, back home</a>
+        <a href="/#work" class="btn btn-ghost">See my work</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>© <span data-year></span> Alberto Cortegana Alonso</span>
+      <a href="/" class="text-reset text-decoration-none">Back to home</a>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

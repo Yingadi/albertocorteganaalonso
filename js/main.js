@@ -1,7 +1,3 @@
-// Path back to the site root ("" on the home page, "../" on project pages)
-const root = document.body.dataset.root || "";
-const levelNumber = (i) => String(i + 1).padStart(2, "0");
-
 // Navbar: add a border/background once the page is scrolled
 const nav = document.querySelector(".site-nav");
 if (nav) {
@@ -22,13 +18,16 @@ if (nav && menu && menuToggle) {
   const isOpen = () => menu.classList.contains("show") || menu.classList.contains("showing");
 
   // aria-expanded drives the hamburger <-> X animation in the CSS
+  // "menu-open" on the navbar fades the name out while the panel is open
   menu.addEventListener("show.bs.offcanvas", () => {
     menuToggle.setAttribute("aria-expanded", "true");
     menuToggle.setAttribute("aria-label", "Close menu");
+    nav.classList.add("menu-open");
   });
   menu.addEventListener("hide.bs.offcanvas", () => {
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open menu");
+    nav.classList.remove("menu-open");
   });
 
   // Links: close the panel first, then scroll to the section once the page can scroll again
@@ -81,98 +80,83 @@ document.querySelectorAll("[data-year]").forEach((el) => {
 });
 
 // ---------------------------------------------------------------------------
-// Level select (home page)
+// Clips: <video class="clip"> behaves like a GIF. It plays muted and looping while it's on
+// screen and pauses when it scrolls away, so only the visible ones use resources.
+// With "reduce motion" turned on in the system, it stays still on its poster/first frame.
+// ---------------------------------------------------------------------------
+const clipObserver = reduceMotion
+  ? null
+  : new IntersectionObserver(
+      (entries) => entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) target.play().catch(() => {}); // autoplay blocked: the poster stays
+        else target.pause();
+      }),
+      { threshold: 0.25 }
+    );
+
+function setupClips(root = document) {
+  root.querySelectorAll("video.clip").forEach((video) => {
+    video.muted = true; // required for autoplay on mobile browsers
+    clipObserver?.observe(video);
+  });
+}
+
+setupClips();
+
+// ---------------------------------------------------------------------------
+// Project list (home page)
 // ---------------------------------------------------------------------------
 const levelList = document.getElementById("level-list");
 const levelFilters = document.getElementById("level-filters");
 
-// number: position in the full list (keeps "Level 03" even when filtered)
-// reverse: puts the image on the right, so rows keep alternating after filtering
-function levelTemplate(p, number, reverse) {
-  const video = p.preview
-    ? `<video src="${p.preview}" muted loop playsinline preload="none" aria-hidden="true"></video>
-       <span class="preview-badge">▶ Hover to preview</span>`
-    : "";
+// The project's clip if it has one (plays on its own, see setupClips), otherwise its image
+function levelMedia(p) {
+  if (!p.preview) return `<img src="${p.thumbnail}" alt="${p.title} screenshot" loading="lazy">`;
+
+  // Without a thumbnail, preload="metadata" makes the browser show the clip's first frame
+  const poster = p.thumbnail ? `poster="${p.thumbnail}"` : "";
+  return `<video class="clip" src="${p.preview}" ${poster} preload="${p.thumbnail ? "none" : "metadata"}"
+            muted loop playsinline disablepictureinpicture disableremoteplayback
+            aria-label="${p.title} gameplay"></video>`;
+}
+
+// Minimal card: clip, title, one-line summary, role, and "tech / year / team".
+// Empty fields are simply left out. Tags aren't shown here, they only drive the filter buttons.
+// reverse: puts the media on the right, so rows keep alternating after filtering
+function levelTemplate(p, reverse) {
+  const meta = [p.engine, p.year, p.team].filter(Boolean).join(" / ");
+  // Unique name so the filter animation can follow each card (see showTag)
+  const id = p.slug.replace(/[^a-z0-9-]/gi, "-");
 
   return `
-    <article class="level">
-      <a href="${p.url}" class="level-link row g-4 g-lg-5 align-items-center">
+    <article class="level" style="view-transition-name: level-${id}">
+      <a href="${p.url}" class="level-link row g-4 g-xl-5 align-items-center">
         <div class="col-lg-7 ${reverse ? "order-lg-2" : ""}">
-          <div class="level-media">
-            <img src="${p.thumbnail}" alt="${p.title} screenshot" loading="lazy">
-            ${video}
-          </div>
+          <div class="level-media">${levelMedia(p)}</div>
         </div>
         <div class="col-lg-5">
-          <p class="label">Level ${levelNumber(number)}</p>
           <h3 class="level-title">${p.title}</h3>
-          <p class="level-summary">${p.summary}</p>
-          <dl class="level-specs">
-            <div><dt>Role</dt><dd>${p.role}</dd></div>
-            <div><dt>Tech</dt><dd>${p.engine}</dd></div>
-            <div><dt>Team</dt><dd>${p.team}</dd></div>
-            <div><dt>Year</dt><dd>${p.year}</dd></div>
-          </dl>
-          <ul class="tag-list">
-            ${p.tags.map((t) => `<li class="tag">${t}</li>`).join("")}
-          </ul>
+          ${p.summary ? `<p class="level-summary">${p.summary}</p>` : ""}
+          ${p.role ? `<p class="level-role">${p.role}</p>` : ""}
+          ${meta ? `<p class="level-meta">${meta}</p>` : ""}
           <span class="level-cta">View project <span class="arrow">→</span></span>
         </div>
       </a>
     </article>`;
 }
 
-// Play the gameplay clip on hover/focus (desktop) or when scrolled into view (touch)
-let touchObserver = null;
-
-function setupPreviews() {
-  const isTouch = window.matchMedia("(hover: none)").matches;
-
-  const play = (media) => {
-    const video = media.querySelector("video");
-    if (!video) return;
-    media.classList.add("is-playing");
-    video.play().catch(() => media.classList.remove("is-playing"));
-  };
-  const stop = (media) => {
-    const video = media.querySelector("video");
-    if (!video) return;
-    media.classList.remove("is-playing");
-    video.pause();
-  };
-
-  const medias = levelList.querySelectorAll(".level-media");
-
-  if (isTouch) {
-    if (touchObserver) touchObserver.disconnect();
-    touchObserver = new IntersectionObserver(
-      (entries) => entries.forEach((e) => (e.isIntersecting ? play(e.target) : stop(e.target))),
-      { threshold: 0.6 }
-    );
-    medias.forEach((m) => touchObserver.observe(m));
-    return;
-  }
-
-  levelList.querySelectorAll(".level-link").forEach((link) => {
-    const media = link.querySelector(".level-media");
-    link.addEventListener("mouseenter", () => play(media));
-    link.addEventListener("mouseleave", () => stop(media));
-    link.addEventListener("focus", () => play(media));
-    link.addEventListener("blur", () => stop(media));
-  });
-}
-
 function renderLevels(activeTag) {
-  const visible = PROJECTS.map((p, i) => ({ p, i })).filter(({ p }) => !activeTag || p.tags.includes(activeTag));
+  const visible = PROJECTS.filter((p) => !activeTag || p.tags.includes(activeTag));
 
-  levelList.innerHTML = visible.map(({ p, i }, pos) => levelTemplate(p, i, pos % 2 === 1)).join("");
+  levelList.querySelectorAll("video.clip").forEach((v) => clipObserver?.unobserve(v));
+  levelList.innerHTML = visible.map((p, pos) => levelTemplate(p, pos % 2 === 1)).join("");
   const pad = (n) => String(n).padStart(2, "0");
   document.querySelectorAll("[data-project-count]").forEach((el) => {
     el.textContent = activeTag
       ? `${pad(visible.length)} of ${pad(PROJECTS.length)} projects`
       : `${pad(PROJECTS.length)} projects`;
   });
-  setupPreviews();
+  setupClips(levelList);
 }
 
 // Tag filter buttons: "All 4", "Unity 2", ... in the order of TAGS (js/projects.js)
@@ -193,8 +177,27 @@ function renderFilters() {
     const btn = e.target.closest(".filter-btn");
     if (!btn) return;
     levelFilters.querySelectorAll(".filter-btn").forEach((b) => b.setAttribute("aria-pressed", b === btn));
-    renderLevels(btn.dataset.tag);
+    showTag(btn.dataset.tag);
   });
+}
+
+// Animated filter change. With the View Transitions API, cards that stay slide to their new
+// place, the ones leaving fade out and the new ones come in (styles in css/style.css).
+// Browsers without it get a quick fade of the whole list; "reduce motion" just swaps it.
+function showTag(tag) {
+  if (reduceMotion) return renderLevels(tag);
+
+  if (document.startViewTransition) {
+    const transition = document.startViewTransition(() => renderLevels(tag));
+    transition.ready.catch(() => {}); // the browser may skip it (e.g. clicking again mid-animation)
+    return;
+  }
+
+  levelList.classList.add("is-switching");
+  setTimeout(() => {
+    renderLevels(tag);
+    levelList.classList.remove("is-switching");
+  }, 200);
 }
 
 if (levelList && typeof PROJECTS !== "undefined") {
@@ -207,27 +210,39 @@ if (levelList && typeof PROJECTS !== "undefined") {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Project page: level number + "next level" link
-// ---------------------------------------------------------------------------
-const currentSlug = document.body.dataset.project;
+// Home page scroll position. Coming back from a project ("← All projects" or the browser's back
+// button) puts the visitor exactly where they were. Arriving with an anchor instead
+// (e.g. index.html#work) jumps straight there, while the page slides in.
+if (levelList) {
+  window.addEventListener("pagehide", () => sessionStorage.setItem("homeScroll", String(window.scrollY)));
 
-if (currentSlug && typeof PROJECTS !== "undefined") {
-  const i = PROJECTS.findIndex((p) => p.slug === currentSlug);
+  const navigation = performance.getEntriesByType("navigation")[0];
+  const saved = sessionStorage.getItem("homeScroll");
 
-  if (i !== -1) {
-    document.querySelectorAll("[data-level-number]").forEach((el) => {
-      el.textContent = `Level ${levelNumber(i)}`;
-    });
-
-    const nextSlot = document.getElementById("next-level");
-    const n = (i + 1) % PROJECTS.length;
-    if (nextSlot && n !== i) {
-      nextSlot.innerHTML = `
-        <a href="${root}${PROJECTS[n].url}" class="next-level-link">
-          <span class="label">Next level ${levelNumber(n)}</span>
-          <span class="next-level-title">${PROJECTS[n].title} →</span>
-        </a>`;
-    }
+  if (navigation?.type === "back_forward" && saved !== null) {
+    window.scrollTo({ top: Number(saved), behavior: "instant" });
+  } else if (location.hash) {
+    document.querySelector(location.hash)?.scrollIntoView({ behavior: "instant" });
   }
 }
+
+// ---------------------------------------------------------------------------
+// Project page
+// ---------------------------------------------------------------------------
+// "← All projects": when the visitor came from the home page, go back in history instead, so
+// they land exactly where they were on it
+const backLink = document.querySelector(".back-link");
+if (backLink) {
+  backLink.addEventListener("click", (e) => {
+    const from = document.referrer ? new URL(document.referrer) : null;
+    const cameFromHome = from && from.origin === location.origin && /\/(index\.html)?$/.test(from.pathname);
+    if (cameFromHome && history.length > 1) {
+      e.preventDefault();
+      e.stopPropagation(); // handled here, not by the generic link handler in js/page-transition.js
+      // Play the exit animation first if page transitions are on (see js/page-transition.js)
+      if (window.pageLeave) window.pageLeave("back", () => history.back());
+      else history.back();
+    }
+  });
+}
+

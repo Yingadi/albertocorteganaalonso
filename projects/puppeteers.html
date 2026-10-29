@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Puppeteers | Alberto Cortegana Alonso</title>
+  <meta name="description" content="Puppeteers: an online co-op 3D puzzle-platformer made in Unreal Engine 5. I built its online sessions with EOS, the replicated ragdoll and the sprint VFX.">
+
+  <!-- Canonical address and share preview (LinkedIn, WhatsApp, Discord...) -->
+  <link rel="canonical" href="https://albertocortegana.com/projects/puppeteers.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alberto Cortegana Alonso">
+  <meta property="og:title" content="Puppeteers | Alberto Cortegana Alonso">
+  <meta property="og:description" content="Puppeteers: an online co-op 3D puzzle-platformer made in Unreal Engine 5. I built its online sessions with EOS, the replicated ragdoll and the sprint VFX.">
+  <meta property="og:url" content="https://albertocortegana.com/projects/puppeteers.html">
+  <meta property="og:image" content="https://albertocortegana.com/assets/video/puppeteers/main-poster.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon: SVG for modern browsers, PNG fallback, and the iOS home screen icon -->
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+  <!-- Fonts: self-hosted (css/fonts.css), the main one preloaded so text doesn't swap late -->
+  <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/fonts.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Page transitions: in <head> so the entrance animation is set before the page is painted -->
+  <script src="../js/page-transition.js"></script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Dot grid background (parallax on scroll, see js/main.js) -->
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md fixed-top site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Alberto Cortegana<span>.</span></a>
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
+      <!-- Mobile: side panel from the right. From md up: regular inline links -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="main-nav" aria-label="Menu">
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 align-items-md-center gap-md-3">
+            <li class="nav-item"><a class="nav-link" href="../index.html#work">Work</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contact</a></li>
+            <li class="nav-item"><a class="btn btn-ghost" href="../assets/Alberto-Cortegana-Alonso-CV.pdf" target="_blank" rel="noopener">CV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <!-- Title -->
+  <header class="project-header">
+    <div class="container">
+      <a href="../index.html#work" class="back-link">← All projects</a>
+      <h1>Puppeteers</h1>
+      <p class="lead text-muted-soft mb-0" style="max-width: 40rem;">
+        Online co-op 3D puzzle-platformer where your grappling hook is both weapon and movement.
+      </p>
+      <p class="project-role">Network &amp; Gameplay Programmer</p>
+      <p class="project-meta">Unreal Engine 5, C++, EOS / Team of 3 / 2026</p>
+    </div>
+  </header>
+
+  <!-- Main media. The poster is shown while the video loads -->
+  <div class="container">
+    <div class="project-media ratio ratio-16x9">
+      <video class="clip" src="../assets/video/puppeteers/main.mp4" poster="../assets/video/puppeteers/main-poster.jpg" preload="metadata"
+             muted loop playsinline disablepictureinpicture disableremoteplayback
+             aria-label="Puppeteers gameplay"></video>
+    </div>
+
+    <!-- Links: add buttons here if there's a playable build or a video, e.g.
+         <div class="d-flex flex-wrap gap-3 mt-4">
+           <a href="https://..." class="btn btn-accent" target="_blank" rel="noopener">Play on itch.io ↗</a>
+         </div> -->
+  </div>
+
+  <!-- Content -->
+  <div class="container section">
+    <div class="prose">
+      <h2>Overview</h2>
+      <p>
+        Puppeteers is an online co-op 3D puzzle-platformer. Players use a grappling hook both to fight
+        enemies and to move around the map. Physics-based cubes and triangles are spread across each level:
+        players can pick them up and throw them, placing them next to a high ledge to climb up and reach it.
+      </p>
+      <p>
+        We made it in Unreal Engine 5 with C++ as a team of three, as a course project at ESAT during the
+        second semester of 2026. My work focused on the online side of the game and on some of its gameplay features.
+      </p>
+
+      <h2>What I did</h2>
+    </div>
+
+    <!-- One block per feature: clip + short explanation -->
+    <div class="features">
+      <article class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/puppeteers/sessions.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Lobby and session browser"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Online sessions with EOS</h3>
+          <p>
+            I set up Epic Online Services through the EOS Integration Kit (EIK) plugin and built the lobby
+            system on top of it. Players can create a session, or open a session browser that lists every
+            active session and join one from there.
+          </p>
+        </div>
+      </article>
+
+      <article class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7 order-lg-2">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/puppeteers/ragdoll.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Replicated ragdoll"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Replicated ragdoll</h3>
+          <p>
+            A basic ragdoll for both the player characters and the enemies, replicated over the network
+            so every player sees it.
+          </p>
+        </div>
+      </article>
+
+      <article class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/puppeteers/sprint.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Sprint VFX"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Sprint VFX</h3>
+          <p>
+            A cartoon-style Niagara effect: puffs of smoke come out of the character's feet while sprinting.
+            It's replicated too, so the other players see it as well.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Optional sections to add later, see projects/_template.html:
+         "Technical highlights" (an interesting problem and how you solved it) and a screenshot "Gallery" -->
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>© <span data-year></span> Alberto Cortegana Alonso</span>
+      <a href="../index.html" class="text-reset text-decoration-none">Back to home</a>
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

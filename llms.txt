@@ -1,0 +1,15 @@
+# Alberto Cortegana Alonso
+
+> Portfolio of Alberto Cortegana Alonso, a game programmer from Spain finishing a Higher National Diploma (HND) in Game Programming at ESAT, Valencia. Focused on gameplay programming, with experience in Unreal Engine 5 (C++) and Unity (C#).
+
+## Projects
+
+- [Puppeteers](https://albertocortegana.com/projects/puppeteers.html): online co-op 3D puzzle-platformer in Unreal Engine 5 and C++, team of 3. Online sessions with Epic Online Services, lobby system and session browser, replicated ragdoll, replicated sprint VFX.
+- [Procedural Voxel Game](https://albertocortegana.com/projects/procedural-voxel-game.html): infinite Minecraft-style voxel world in Unity 6 and C#, made solo in 10 days for the AEVI DevContest. Chunked terrain from 2D Perlin noise with face culling, caves and ore veins from 3D Perlin noise, physics-free player movement, real-time terrain editing, seeds.
+
+## Contact
+
+- Email: contact@albertocortegana.com
+- [CV (PDF)](https://albertocortegana.com/assets/Alberto-Cortegana-Alonso-CV.pdf)
+- [GitHub](https://github.com/corteganaal)
+- [itch.io](https://yinga.itch.io)

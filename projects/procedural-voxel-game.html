@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Procedural Voxel Game | Alberto Cortegana Alonso</title>
+  <meta name="description" content="Procedural Voxel Game: an infinite Minecraft-style voxel world built solo in Unity in 10 days for the AEVI DevContest.">
+
+  <!-- Canonical address and share preview (LinkedIn, WhatsApp, Discord...) -->
+  <link rel="canonical" href="https://albertocortegana.com/projects/procedural-voxel-game.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alberto Cortegana Alonso">
+  <meta property="og:title" content="Procedural Voxel Game | Alberto Cortegana Alonso">
+  <meta property="og:description" content="Procedural Voxel Game: an infinite Minecraft-style voxel world built solo in Unity in 10 days for the AEVI DevContest.">
+  <meta property="og:url" content="https://albertocortegana.com/projects/procedural-voxel-game.html">
+  <meta property="og:image" content="https://albertocortegana.com/assets/video/procedural-voxel-game/main-poster.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon: SVG for modern browsers, PNG fallback, and the iOS home screen icon -->
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+  <!-- Fonts: self-hosted (css/fonts.css), the main one preloaded so text doesn't swap late -->
+  <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/fonts.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Page transitions: in <head> so the entrance animation is set before the page is painted -->
+  <script src="../js/page-transition.js"></script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Dot grid background (parallax on scroll, see js/main.js) -->
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md fixed-top site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Alberto Cortegana<span>.</span></a>
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
+      <!-- Mobile: side panel from the right. From md up: regular inline links -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="main-nav" aria-label="Menu">
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 align-items-md-center gap-md-3">
+            <li class="nav-item"><a class="nav-link" href="../index.html#work">Work</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contact</a></li>
+            <li class="nav-item"><a class="btn btn-ghost" href="../assets/Alberto-Cortegana-Alonso-CV.pdf" target="_blank" rel="noopener">CV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <!-- Title -->
+  <header class="project-header">
+    <div class="container">
+      <a href="../index.html#work" class="back-link">← All projects</a>
+      <h1>Procedural Voxel Game</h1>
+      <p class="lead text-muted-soft mb-0" style="max-width: 40rem;">
+        Infinite Minecraft-style voxel world, built solo in 10 days for the AEVI DevContest.
+      </p>
+      <p class="project-role">Gameplay &amp; Systems Programmer</p>
+      <p class="project-meta">Unity 6, C# / Solo / 2026</p>
+    </div>
+  </header>
+
+  <!-- Main media. The poster is shown while the video loads -->
+  <div class="container">
+    <div class="project-media ratio ratio-16x9">
+      <video class="clip" src="../assets/video/procedural-voxel-game/main.mp4" poster="../assets/video/procedural-voxel-game/main-poster.jpg" preload="metadata"
+             muted loop playsinline disablepictureinpicture disableremoteplayback
+             aria-label="Procedural Voxel Game gameplay"></video>
+    </div>
+
+    <!-- Links: add buttons here if there's a playable build or a video, e.g.
+         <div class="d-flex flex-wrap gap-3 mt-4">
+           <a href="https://..." class="btn btn-accent" target="_blank" rel="noopener">Play on itch.io ↗</a>
+         </div> -->
+  </div>
+
+  <!-- Content -->
+  <div class="container section">
+    <div class="prose">
+      <h2>Overview</h2>
+      <p>
+        A Minecraft-style voxel prototype made for the AEVI DevContest, where the challenge was to build a procedural
+        voxel world with real-time terrain editing in just 10 days. I made it solo in Unity 6 with C#, and it got my
+        school into the semifinals.
+      </p>
+      <p>
+        I had never worked with voxels or procedural generation before, so a big part of those ten days went into
+        research, using technical guides and community resources to learn the techniques as I built it.
+      </p>
+
+      <h2>What I did</h2>
+    </div>
+
+    <!-- One block per feature: clip + short explanation -->
+    <div class="features">
+      <article class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/procedural-voxel-game/terrain.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Flying over the generated terrain"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Infinite procedural terrain</h3>
+          <p>
+            The world is split into chunks that are generated around the player as they move, so it never runs out.
+            Terrain height comes from 2D Perlin noise. To keep it fast, each chunk's mesh only includes the block faces
+            that touch air (face culling), so hidden faces are never drawn.
+          </p>
+        </div>
+      </article>
+      <article class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7 order-lg-2">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/procedural-voxel-game/caves.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Digging down into a cave"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Caves and ore veins</h3>
+          <p>
+            3D Perlin noise carves caves out of the ground and spreads veins of coal and other materials underground.
+          </p>
+        </div>
+      </article>
+      <article class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/procedural-voxel-game/player.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Walking and placing blocks"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Custom player movement and terrain editing</h3>
+          <p>
+            The player doesn't use Unity's physics or its Character Controller. Before every move, it checks the voxel map
+            in code to see whether the block it's moving into is solid. Blocks can be placed and broken in real time.
+          </p>
+        </div>
+      </article>
+      <article class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7 order-lg-2">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/procedural-voxel-game/seeds.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Entering a seed to create a world"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Seeds and spectator mode</h3>
+          <p>
+            Every world comes from a seed: the same seed always gives the same world, and leaving it empty picks a random one.
+            A spectator mode lets you fly freely around the world.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Optional sections to add later, see projects/_template.html:
+         "Technical highlights" (an interesting problem and how you solved it) and a screenshot "Gallery" -->
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>© <span data-year></span> Alberto Cortegana Alonso</span>
+      <a href="../index.html" class="text-reset text-decoration-none">Back to home</a>
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

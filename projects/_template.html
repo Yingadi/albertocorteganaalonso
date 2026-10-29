@@ -8,23 +8,37 @@
   <!-- Keeps search engines away from the template. DELETE this line in your copy for a real project -->
   <meta name="robots" content="noindex">
 
+  <!-- Canonical address and share preview: set the page's address and a 16:9 image (its main poster works) -->
+  <link rel="canonical" href="https://albertocortegana.com/projects/your-project-slug.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alberto Cortegana Alonso">
+  <meta property="og:title" content="Untitled Platformer | Alberto Cortegana Alonso">
+  <meta property="og:description" content="Untitled Platformer: a 2D precision platformer with a custom character controller.">
+  <meta property="og:url" content="https://albertocortegana.com/projects/your-project-slug.html">
+  <meta property="og:image" content="https://albertocortegana.com/assets/video/your-project-slug/main-poster.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
   <!-- Favicon: SVG for modern browsers, PNG fallback, and the iOS home screen icon -->
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Fonts: self-hosted (css/fonts.css), the main one preloaded so text doesn't swap late -->
+  <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/fonts.css">
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
 
   <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Page transitions: in <head> so the entrance animation is set before the page is painted -->
+  <script src="../js/page-transition.js"></script>
 </head>
-<!-- Template: copy this file for each project. data-project must match the project's slug in js/projects.js -->
-<body data-root="../" data-project="your-project-slug">
+<!-- Template: copy this file for each project and link it from js/projects.js (its "url") -->
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Dot grid background (parallax on scroll, see js/main.js) -->
   <div class="bg-grid" aria-hidden="true"></div>
@@ -52,38 +66,33 @@
     </div>
   </nav>
 
+  <main id="main">
+
   <!-- Title -->
   <header class="project-header">
     <div class="container">
-      <a href="../index.html#work" class="back-link">← Level select</a>
-      <p class="label d-flex" data-level-number>Level</p>
+      <a href="../index.html#work" class="back-link">← All projects</a>
       <h1>Untitled Platformer</h1>
-      <p class="lead text-muted-soft mb-4" style="max-width: 40rem;">
+      <p class="lead text-muted-soft mb-0" style="max-width: 40rem;">
         A 2D precision platformer with a custom character controller and tight, responsive movement.
       </p>
-      <ul class="tag-list">
-        <li class="tag">Gameplay</li>
-        <li class="tag">Character controller</li>
-        <li class="tag">Tools</li>
-      </ul>
+      <!-- Same two lines as the home page card: your role, then "tech / team / year" -->
+      <p class="project-role">Gameplay Programmer</p>
+      <p class="project-meta">Unity, C# / Solo / 2026</p>
     </div>
   </header>
 
-  <!-- Main media: swap the <img> for a <video controls>, a YouTube <iframe> or an itch.io/WebGL <iframe> -->
+  <!-- Main media: a looping clip like a GIF (class="clip" makes it play on its own while on screen).
+       Videos go in assets/video/<slug>/. Can also be swapped for an <img>, or a YouTube/itch.io <iframe>.
+       The poster (a frame of the clip) is shown while the video loads -->
   <div class="container">
     <div class="project-media ratio ratio-16x9">
-      <img src="../assets/img/projects/placeholder.svg" alt="Untitled Platformer gameplay">
+      <video class="clip" src="../assets/video/your-project-slug/main.mp4" poster="../assets/video/your-project-slug/poster.jpg" preload="metadata"
+             muted loop playsinline disablepictureinpicture disableremoteplayback
+             aria-label="Project name gameplay"></video>
     </div>
 
-    <!-- Specs + links -->
-    <dl class="spec-strip mt-4">
-      <div><dt>Role</dt><dd>Gameplay Programmer</dd></div>
-      <div><dt>Engine</dt><dd>Unity 6</dd></div>
-      <div><dt>Language</dt><dd>C#</dd></div>
-      <div><dt>Team</dt><dd>Solo</dd></div>
-      <div><dt>Duration</dt><dd>3 months</dd></div>
-      <div><dt>Platform</dt><dd>PC, WebGL</dd></div>
-    </dl>
+    <!-- Links (optional): delete this block if there's nothing to link -->
     <div class="d-flex flex-wrap gap-3 mt-4">
       <a href="https://itch.io/" class="btn btn-accent" target="_blank" rel="noopener">Play on itch.io ↗</a>
       <!-- Hidden by default: remove "hidden" and set the link to show it -->
@@ -92,7 +101,7 @@
   </div>
 
   <!-- Content -->
-  <main class="container section">
+  <div class="container section">
     <div class="prose">
       <h2>Overview</h2>
       <p>
@@ -107,6 +116,42 @@
         <li>Created editor tools to speed up level design.</li>
       </ul>
 
+      <h2>Features</h2>
+    </div>
+
+    <!-- Features: one block per feature, a looping clip + a short explanation.
+         Copy a whole <article> per feature. Adding "order-lg-2" to the clip column puts it on the right -->
+    <div class="features">
+      <article class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/your-project-slug/feature-1.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Feature name in action"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Feature name</h3>
+          <p>What it does and how you built it, in two or three lines. The clip shows it working.</p>
+        </div>
+      </article>
+
+      <article class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7 order-lg-2">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/your-project-slug/feature-2.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Another feature in action"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Another feature</h3>
+          <p>Same idea: one clip, one short explanation.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="prose">
       <h2>Technical highlights</h2>
       <p>Explain one or two interesting problems and how you solved them. A short code snippet helps.</p>
 <pre><code>// Jump buffering: remember the jump input for a short time
@@ -115,6 +160,7 @@ else jumpBufferTimer -= Time.deltaTime;
 
 if (jumpBufferTimer > 0f &amp;&amp; coyoteTimer > 0f) Jump();</code></pre>
 
+      <!-- Gallery (optional): screenshots. Delete the heading and the grid if the project doesn't need it -->
       <h2>Gallery</h2>
     </div>
     <div class="row g-3 gallery">
@@ -123,12 +169,9 @@ if (jumpBufferTimer > 0f &amp;&amp; coyoteTimer > 0f) Jump();</code></pre>
       <div class="col-md-6"><img src="../assets/img/projects/placeholder.svg" alt="Screenshot 3" loading="lazy"></div>
       <div class="col-md-6"><img src="../assets/img/projects/placeholder.svg" alt="Screenshot 4" loading="lazy"></div>
     </div>
-  </main>
+  </div>
 
-  <!-- Filled in by js/main.js from the project list -->
-  <nav class="next-level" aria-label="Next project">
-    <div class="container" id="next-level"></div>
-  </nav>
+  </main>
 
   <footer class="site-footer">
     <div class="container d-flex flex-wrap justify-content-between gap-2">
@@ -137,8 +180,7 @@ if (jumpBufferTimer > 0f &amp;&amp; coyoteTimer > 0f) Jump();</code></pre>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  <script src="../js/projects.js"></script>
+  <script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>
