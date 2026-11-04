@@ -72,4 +72,17 @@ const PROJECTS = [
     preview: "assets/video/edk-engine/preview.mp4",
     url: "projects/edk-engine.html",
   },
+  {
+    slug: "eldrin-tales",
+    title: "Eldrin Tales",
+    summary: "Top-down bullet hell for mobile with auto-aim shooting, an upgrade shop and saved progress.",
+    role: "Gameplay & UI Programmer",
+    engine: "Unity 6, C#",
+    year: 2026,
+    team: "Team of 2",
+    tags: ["Unity"],
+    thumbnail: "assets/video/eldrin-tales/poster.jpg",
+    preview: "assets/video/eldrin-tales/preview.mp4",
+    url: "projects/eldrin-tales.html",
+  },
 ];
