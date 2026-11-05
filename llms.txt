@@ -8,6 +8,7 @@
 - [Procedural Voxel Game](https://albertocortegana.com/projects/procedural-voxel-game.html): infinite Minecraft-style voxel world in Unity 6 and C#, made solo in 10 days for the AEVI DevContest. Chunked terrain from 2D Perlin noise with face culling, caves and ore veins from 3D Perlin noise, physics-free player movement, real-time terrain editing, seeds.
 - [EDK Engine Reimplementation](https://albertocortegana.com/projects/edk-engine.html): core modules of ESAT's C++/OpenGL teaching engine rewritten by a team of 3 and used to build a 3D scene. Fly camera, post-processing pipeline (underwater effect), particle system, GPU and memory management, and the Dear ImGui controls for those systems.
 - [Eldrin Tales](https://albertocortegana.com/projects/eldrin-tales.html): top-down mobile bullet hell in Unity 6 and C#, team of 2. Player with range-based auto-aim shooting, floating touch joystick, upgrade levels and shop, JSON save system, PlayerPrefs settings, audio manager, menus and parts of the HUD.
+- [OneVrJueguitoMore](https://albertocortegana.com/projects/onevrjueguitomore.html): hand-tracking VR game in Unity 6 and C#, team of 2, where hand gestures cast spells. Ranged enemy AI with a detection sphere, teleport movement, player and enemy projectiles, spell particle effects, the shield shader (Shader Graph) and an audio manager.
 
 ## Contact
 

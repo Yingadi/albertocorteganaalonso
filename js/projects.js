@@ -85,4 +85,17 @@ const PROJECTS = [
     preview: "assets/video/eldrin-tales/preview.mp4",
     url: "projects/eldrin-tales.html",
   },
+  {
+    slug: "onevrjueguitomore",
+    title: "OneVrJueguitoMore",
+    summary: "VR dungeon game with hand tracking, where every hand gesture casts a spell.",
+    role: "Gameplay Programmer",
+    engine: "Unity 6, C#, OpenXR",
+    year: 2026,
+    team: "Team of 2",
+    tags: ["Unity"],
+    thumbnail: "assets/video/onevrjueguitomore/poster.jpg",
+    preview: "assets/video/onevrjueguitomore/preview.mp4",
+    url: "projects/onevrjueguitomore.html",
+  },
 ];
