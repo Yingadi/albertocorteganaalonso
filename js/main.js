@@ -82,25 +82,26 @@ document.querySelectorAll("[data-year]").forEach((el) => {
 // ---------------------------------------------------------------------------
 // Clips: <video class="clip"> behaves like a GIF. It plays muted and looping while it's on
 // screen and pauses when it scrolls away, so only the visible ones use resources.
-// With "reduce motion" turned on in the system (common on school/office PCs with Windows
-// animations disabled), clips don't play on their own: on project pages they get the player
-// controls so they can still be watched; the home page cards show their poster.
+// Clips are the content of the site, so they play even with "reduce motion" turned on in the
+// system (common on school/office PCs with Windows animations disabled); only the decorative
+// animations (page transitions, scroll reveal, parallax) respect that setting.
+// If the browser blocks autoplay anyway, project page clips get the player controls so they can
+// still be watched; the home page cards keep their poster (a click there opens the project).
 // ---------------------------------------------------------------------------
-const clipObserver = reduceMotion
-  ? null
-  : new IntersectionObserver(
-      (entries) => entries.forEach(({ target, isIntersecting }) => {
-        if (isIntersecting) target.play().catch(() => {}); // autoplay blocked: the poster stays
-        else target.pause();
-      }),
-      { threshold: 0.25 }
-    );
+const clipObserver = new IntersectionObserver(
+  (entries) => entries.forEach(({ target, isIntersecting }) => {
+    if (!isIntersecting) return target.pause();
+    target.play().catch(() => {
+      if (!target.closest("a")) target.controls = true;
+    });
+  }),
+  { threshold: 0.25 }
+);
 
 function setupClips(root = document) {
   root.querySelectorAll("video.clip").forEach((video) => {
     video.muted = true; // required for autoplay on mobile browsers
-    if (clipObserver) clipObserver.observe(video);
-    else if (!video.closest("a")) video.controls = true; // inside a card link, a click opens the project instead
+    clipObserver.observe(video);
   });
 }
 
@@ -170,7 +171,7 @@ function levelTemplate(p, reverse) {
 function renderLevels(activeTag) {
   const visible = PROJECTS.filter((p) => !activeTag || p.tags.includes(activeTag));
 
-  levelList.querySelectorAll("video.clip").forEach((v) => clipObserver?.unobserve(v));
+  levelList.querySelectorAll("video.clip").forEach((v) => clipObserver.unobserve(v));
   levelList.innerHTML = visible.map((p, pos) => levelTemplate(p, pos % 2 === 1)).join("");
   // After a filter change the cards are already on screen: show them now, the filter has its own animation
   if (activeTag !== undefined) levelList.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("is-revealed"));
