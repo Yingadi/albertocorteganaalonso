@@ -9,6 +9,14 @@
 - [EDK Engine Reimplementation](https://albertocortegana.com/projects/edk-engine.html): core modules of ESAT's C++/OpenGL teaching engine rewritten by a team of 3 and used to build a 3D scene. Fly camera, post-processing pipeline (underwater effect), particle system, GPU and memory management, and the Dear ImGui controls for those systems.
 - [Eldrin Tales](https://albertocortegana.com/projects/eldrin-tales.html): top-down mobile bullet hell in Unity 6 and C#, team of 2. Player with range-based auto-aim shooting, floating touch joystick, upgrade levels and shop, JSON save system, PlayerPrefs settings, audio manager, menus and parts of the HUD.
 - [OneVrJueguitoMore](https://albertocortegana.com/projects/onevrjueguitomore.html): hand-tracking VR game in Unity 6 and C#, team of 2, where hand gestures cast spells. Ranged enemy AI with a detection sphere, teleport movement, player and enemy projectiles, spell particle effects, the shield shader (Shader Graph) and an audio manager.
+- [Aqua Rush](https://albertocortegana.com/projects/aqua-rush.html): infinite runner for Android in Unity 6 and C#, team of 2. Player movement on a 3x3 grid with swipe input buffering, underwater post-processing, lighting and fog, a Voronoi Shader Graph decal for seabed caustics, hit feedback (red screen edges and camera shake) and a JSON scoreboard.
+
+## Game jams
+
+Each one made in about 48 hours over a weekend, as part of the programming team.
+
+- [Survive The Candy](https://elenam.itch.io/survive-the-candy): award "Best Game Work In Progress" at Global Game Jam 2026 (Valencia). Local co-op 2.5D top-down game in Unity 6 and C#, team of 8: two players tied by an unbreakable rope fight candy enemies with it while looking for breathing masks.
+- [Quack Adventures](https://zer0-zzz.itch.io/quack-adventures): local co-op platformer made in Unity and C# by a team of 8 at Global Game Jam 2025 (Valencia). One player controls a rubber duck while the other places bubbles with the mouse as temporary platforms.
 
 ## Contact
 

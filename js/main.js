@@ -225,6 +225,49 @@ function showTag(tag) {
   }, 200);
 }
 
+// ---------------------------------------------------------------------------
+// Game jams (home page): smaller cards in two columns that link out to the game's page
+// ---------------------------------------------------------------------------
+const jamList = document.getElementById("jam-list");
+
+// Trophy icon for the award plaque (Lucide "trophy", ISC license)
+const TROPHY_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M4 22h16" />
+  <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg>`;
+
+function jamTemplate(j) {
+  const meta = [j.engine, j.team].filter(Boolean).join(" / ");
+  // The award shows up as an achievement-style notification over the clip: it pops in once
+  // when the card comes into view (styles in css/style.css, "Game jams")
+  const award = j.award
+    ? `<p class="jam-award"><span class="jam-award-icon">${TROPHY_ICON}</span>
+         <span class="jam-award-name">${j.award} <span class="jam-award-suffix">award</span></span></p>`
+    : "";
+  return `
+    <article class="jam col-md-6" data-reveal>
+      <a href="${j.url}" class="level-link" target="_blank" rel="noopener">
+        <div class="jam-media"><div class="level-media">${levelMedia(j)}</div>${award}</div>
+        <h3 class="jam-title">${j.title}</h3>
+        <p class="jam-event">${j.event}</p>
+        ${j.summary ? `<p class="jam-summary">${j.summary}</p>` : ""}
+        ${meta ? `<p class="level-meta">${meta}</p>` : ""}
+        <span class="level-cta">${j.cta} <span class="arrow">↗</span></span>
+      </a>
+    </article>`;
+}
+
+if (jamList && typeof JAMS !== "undefined") {
+  if (JAMS.length === 0) {
+    document.getElementById("jams")?.remove(); // nothing to show: hide the whole section
+  } else {
+    jamList.innerHTML = JAMS.map(jamTemplate).join("");
+    setupClips(jamList);
+  }
+}
+
 if (levelList && typeof PROJECTS !== "undefined") {
   if (PROJECTS.length === 0) {
     // No projects yet: no filters or count, just a short note

@@ -30,7 +30,7 @@
 */
 // Filter buttons above the list, in this order. Each one shows how many projects have
 // that tag (a project can have several). A tag with no projects is not shown.
-const TAGS = ["Unity", "Unreal Engine", "C++", "Graphics Programming", "Game Jam"];
+const TAGS = ["Unity", "Unreal Engine", "C++", "Graphics Programming"];
 
 const PROJECTS = [
   {
@@ -97,5 +97,57 @@ const PROJECTS = [
     thumbnail: "assets/video/onevrjueguitomore/poster.jpg",
     preview: "assets/video/onevrjueguitomore/preview.mp4",
     url: "projects/onevrjueguitomore.html",
+  },
+  {
+    slug: "aqua-rush",
+    title: "Aqua Rush",
+    summary: "Mobile infinite runner where a fish dodges sharks and sea rubbish while collecting coins.",
+    role: "Gameplay Programmer",
+    engine: "Unity 6, C#",
+    year: 2026,
+    team: "Team of 2",
+    tags: ["Unity"],
+    thumbnail: "assets/video/aqua-rush/poster.jpg",
+    preview: "assets/video/aqua-rush/preview.mp4",
+    url: "projects/aqua-rush.html",
+  },
+];
+
+/*
+  Game jams: shown in their own section below the projects, as smaller cards in two columns.
+  They have no page of their own: the card links to the game's page ("url", e.g. itch.io).
+
+  event:   name of the jam, its year and where we took part
+  award:   the award won, written exactly as it was given. Shown as a plaque with a trophy on the
+           card's clip. Leave "" if there wasn't one
+  summary: what the game is about, in one or two short lines
+  cta:    text of the link, e.g. "Play on itch.io" (browser build) or "View on itch.io" (download)
+*/
+const JAMS = [
+  {
+    slug: "survive-the-candy",
+    title: "Survive The Candy",
+    event: "Global Game Jam 2026, Valencia",
+    award: "Best Game Work In Progress",
+    summary: "Local co-op top-down game in 2.5D. Two players tied by a rope that can't break dash through candy villages, killing candy enemies with the rope while they look for breathing masks to survive.",
+    engine: "Unity 6, C#",
+    team: "Team of 8",
+    thumbnail: "assets/video/survive-the-candy/poster.jpg",
+    preview: "assets/video/survive-the-candy/preview.mp4",
+    url: "https://elenam.itch.io/survive-the-candy",
+    cta: "View on itch.io",
+  },
+  {
+    slug: "quack-adventures",
+    title: "Quack Adventures",
+    event: "Global Game Jam 2025, Valencia",
+    award: "",
+    summary: "Local co-op platformer: one player controls the duck while the other places bubbles with the mouse as temporary platforms.",
+    engine: "Unity, C#",
+    team: "Team of 8",
+    thumbnail: "assets/video/quack-adventures/poster.jpg",
+    preview: "assets/video/quack-adventures/preview.mp4",
+    url: "https://zer0-zzz.itch.io/quack-adventures",
+    cta: "View on itch.io",
   },
 ];

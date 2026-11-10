@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aqua Rush | Alberto Cortegana Alonso</title>
+  <meta name="description" content="Aqua Rush: an infinite runner for Android made in Unity 6 by a team of two. I built the player's grid movement with input buffering, the scoreboard, and the underwater look: post-processing, lighting, fog and caustics.">
+
+  <!-- Canonical address and share preview (LinkedIn, WhatsApp, Discord...) -->
+  <link rel="canonical" href="https://albertocortegana.com/projects/aqua-rush.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alberto Cortegana Alonso">
+  <meta property="og:title" content="Aqua Rush | Alberto Cortegana Alonso">
+  <meta property="og:description" content="Aqua Rush: an infinite runner for Android made in Unity 6 by a team of two. I built the player's grid movement with input buffering, the scoreboard, and the underwater look: post-processing, lighting, fog and caustics.">
+  <meta property="og:url" content="https://albertocortegana.com/projects/aqua-rush.html">
+  <meta property="og:image" content="https://albertocortegana.com/assets/video/aqua-rush/main-poster.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon: SVG for modern browsers, PNG fallback, and the iOS home screen icon -->
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+  <!-- Fonts: self-hosted (css/fonts.css), the main one preloaded so text doesn't swap late -->
+  <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/fonts.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Page transitions: in <head> so the entrance animation is set before the page is painted -->
+  <script src="../js/page-transition.js"></script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Dot grid background (parallax on scroll, see js/main.js) -->
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md fixed-top site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Alberto Cortegana<span>.</span></a>
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
+      <!-- Mobile: side panel from the right. From md up: regular inline links -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="main-nav" aria-label="Menu">
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 align-items-md-center gap-md-3">
+            <li class="nav-item"><a class="nav-link" href="../index.html#work">Work</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contact</a></li>
+            <li class="nav-item"><a class="btn btn-ghost" href="../assets/Alberto-Cortegana-Alonso-CV.pdf" target="_blank" rel="noopener">CV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <!-- Title -->
+  <header class="project-header">
+    <div class="container">
+      <a href="../index.html#work" class="back-link">← All projects</a>
+      <h1>Aqua Rush</h1>
+      <p class="lead text-muted-soft mb-0" style="max-width: 40rem;">
+        Mobile infinite runner where a fish dodges sharks and sea rubbish while collecting coins.
+      </p>
+      <p class="project-role">Gameplay Programmer</p>
+      <p class="project-meta">Unity 6, C# / Team of 2 / 2026</p>
+    </div>
+  </header>
+
+  <!-- Main media. The poster is shown while the video loads -->
+  <div class="container">
+    <div class="project-media ratio ratio-16x9">
+      <video class="clip" src="../assets/video/aqua-rush/main.mp4" poster="../assets/video/aqua-rush/main-poster.jpg" preload="metadata"
+             muted loop playsinline disablepictureinpicture disableremoteplayback
+             aria-label="Aqua Rush gameplay: a fish swimming through caves and dodging obstacles"></video>
+    </div>
+
+    <!-- Links: add buttons here if there's a playable build or a video, e.g.
+         <div class="d-flex flex-wrap gap-3 mt-4">
+           <a href="https://..." class="btn btn-accent" target="_blank" rel="noopener">Play on itch.io ↗</a>
+         </div> -->
+  </div>
+
+  <!-- Content -->
+  <div class="container section">
+    <div class="prose" data-reveal>
+      <h2>Overview</h2>
+      <p>
+        Aqua Rush is an infinite runner for Android phones. You're a fish swimming through the sea, collecting
+        coins while you dodge sharks and the rubbish thrown into the water.
+      </p>
+      <p>
+        We made it as a team of two for one of our ESAT course projects, using Unity 6 and C#. I programmed the
+        player's movement and the scoreboard, and I took care of most of the game's look: the post-processing,
+        lighting and fog that make it feel underwater, and the light patterns on the seabed.
+      </p>
+
+      <h2>What I did</h2>
+    </div>
+
+    <!-- One block per feature: clip + short explanation.
+         The game is portrait: clips show it in the middle over a blurred copy of itself -->
+    <div class="features">
+      <article data-reveal class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/aqua-rush/movement.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="The fish changing lanes and height to dodge obstacles"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Grid movement and input buffer</h3>
+          <p>
+            The fish moves on a 3x3 grid: a swipe in any of the four directions changes its lane or its height.
+            Swipes are buffered, so quick swipes in a row are remembered and played in order instead of being
+            lost while the fish is still moving.
+          </p>
+        </div>
+      </article>
+      <article data-reveal class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7 order-lg-2">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/aqua-rush/visuals.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Swimming through an underwater cave with light patterns moving on the seabed"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Underwater look</h3>
+          <p>
+            A full post-processing setup, plus lighting and fog tuned so the scene feels deep under the sea.
+            The light patterns on the seabed are a decal projector with a Shader Graph material based on Voronoi
+            noise, imitating the way sunlight ripples through water.
+          </p>
+        </div>
+      </article>
+      <article data-reveal class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/aqua-rush/hit.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="Hitting obstacles: the screen edges flash red and the camera shakes"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Hit feedback</h3>
+          <p>
+            Hitting an obstacle triggers a second post-processing effect that turns the edges of the screen red,
+            together with a short camera shake, so every hit is felt.
+          </p>
+        </div>
+      </article>
+      <article data-reveal class="feature row g-4 g-xl-5 align-items-center">
+        <div class="col-lg-7 order-lg-2">
+          <div class="clip-frame">
+            <video class="clip" src="../assets/video/aqua-rush/scoreboard.mp4" preload="metadata"
+                   muted loop playsinline disablepictureinpicture disableremoteplayback
+                   aria-label="The game over screen listing the best scores"></video>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3>Scoreboard and saving</h3>
+          <p>
+            A simple but effective save system: a few plain data classes and a static class that holds the game
+            data. It loads when the game starts and saves to a JSON file after every run, and the game over
+            screen reads the best scores from it.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Optional sections to add later: "Technical highlights" (an interesting problem and how
+         you solved it, with a short code snippet) and a screenshot "Gallery" -->
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>© <span data-year></span> Alberto Cortegana Alonso</span>
+      <a href="../index.html" class="text-reset text-decoration-none">Back to home</a>
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
