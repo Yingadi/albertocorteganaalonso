@@ -524,6 +524,22 @@ video:focus-visible {
   border-color: var(--c-muted);
 }
 
+/* "Game jams": looks like the filters but jumps to its own section (dashed border = it's a link) */
+.filter-jump {
+  padding-right: 0.65rem;
+  border-style: dashed;
+  text-decoration: none;
+}
+
+.filter-jump .arrow {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.filter-jump:hover .arrow {
+  transform: translateY(2px);
+}
+
 .filter-count {
   min-width: 1.4rem;
   padding: 0.05rem 0.35rem;
@@ -781,12 +797,6 @@ html.page-leave-back body > :not(.site-nav, .bg-grid, .skip-link) {
   font-size: 0.8rem;
   color: var(--c-muted);
   margin-bottom: 1rem;
-}
-
-.jam-intro {
-  max-width: 40rem;
-  color: var(--c-muted);
-  margin: -1rem 0 2rem;
 }
 
 /* Award: a notification over the bottom of the clip with a golden trophy, like the ones games

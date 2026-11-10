@@ -13,7 +13,7 @@
 
 ## Game jams
 
-Each one made in about 48 hours over a weekend, as part of the programming team.
+Each one made in 48 hours, as part of the programming team.
 
 - [Survive The Candy](https://elenam.itch.io/survive-the-candy): award "Best Game Work In Progress" at Global Game Jam 2026 (Valencia). Local co-op 2.5D top-down game in Unity 6 and C#, team of 8: two players tied by an unbreakable rope fight candy enemies with it while looking for breathing masks.
 - [Quack Adventures](https://zer0-zzz.itch.io/quack-adventures): local co-op platformer made in Unity and C# by a team of 8 at Global Game Jam 2025 (Valencia). One player controls a rubber duck while the other places bubbles with the mouse as temporary platforms.

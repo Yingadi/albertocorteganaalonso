@@ -121,6 +121,8 @@ const PROJECTS = [
   award:   the award won, written exactly as it was given. Shown as a plaque with a trophy on the
            card's clip. Leave "" if there wasn't one
   summary: what the game is about, in one or two short lines
+  role:    my part in the team, shown in bold like the role on project cards
+  time:    how long the jam lasted, shown next to the engine and team (e.g. "48 hours")
   cta:    text of the link, e.g. "Play on itch.io" (browser build) or "View on itch.io" (download)
 */
 const JAMS = [
@@ -130,8 +132,10 @@ const JAMS = [
     event: "Global Game Jam 2026, Valencia",
     award: "Best Game Work In Progress",
     summary: "Local co-op top-down game in 2.5D. Two players tied by a rope that can't break dash through candy villages, killing candy enemies with the rope while they look for breathing masks to survive.",
+    role: "Programming team",
     engine: "Unity 6, C#",
     team: "Team of 8",
+    time: "48 hours",
     thumbnail: "assets/video/survive-the-candy/poster.jpg",
     preview: "assets/video/survive-the-candy/preview.mp4",
     url: "https://elenam.itch.io/survive-the-candy",
@@ -143,8 +147,10 @@ const JAMS = [
     event: "Global Game Jam 2025, Valencia",
     award: "",
     summary: "Local co-op platformer: one player controls the duck while the other places bubbles with the mouse as temporary platforms.",
+    role: "Programming team",
     engine: "Unity, C#",
     team: "Team of 8",
+    time: "48 hours",
     thumbnail: "assets/video/quack-adventures/poster.jpg",
     preview: "assets/video/quack-adventures/preview.mp4",
     url: "https://zer0-zzz.itch.io/quack-adventures",

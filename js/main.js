@@ -195,13 +195,20 @@ function renderFilters() {
        ${label}<span class="filter-count">${count}</span>
      </button>`;
 
+  // Game jams live in their own section below, so this one is a link that jumps there, not a filter
+  const jams = typeof JAMS !== "undefined" && JAMS.length
+    ? `<a href="#jams" class="filter-btn filter-jump">
+         Game jams<span class="filter-count">${JAMS.length}</span><span class="arrow" aria-hidden="true">↓</span>
+       </a>`
+    : "";
+
   levelFilters.innerHTML =
-    button("All", PROJECTS.length, "", true) + tags.map(([t, n]) => button(t, n, t, false)).join("");
+    button("All", PROJECTS.length, "", true) + tags.map(([t, n]) => button(t, n, t, false)).join("") + jams;
 
   levelFilters.addEventListener("click", (e) => {
-    const btn = e.target.closest(".filter-btn");
+    const btn = e.target.closest("button.filter-btn");
     if (!btn) return;
-    levelFilters.querySelectorAll(".filter-btn").forEach((b) => b.setAttribute("aria-pressed", b === btn));
+    levelFilters.querySelectorAll("button.filter-btn").forEach((b) => b.setAttribute("aria-pressed", b === btn));
     showTag(btn.dataset.tag);
   });
 }
@@ -239,7 +246,7 @@ const TROPHY_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
   <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg>`;
 
 function jamTemplate(j) {
-  const meta = [j.engine, j.team].filter(Boolean).join(" / ");
+  const meta = [j.engine, j.team, j.time].filter(Boolean).join(" / ");
   // The award shows up as an achievement-style notification over the clip: it pops in once
   // when the card comes into view (styles in css/style.css, "Game jams")
   const award = j.award
@@ -253,6 +260,7 @@ function jamTemplate(j) {
         <h3 class="jam-title">${j.title}</h3>
         <p class="jam-event">${j.event}</p>
         ${j.summary ? `<p class="jam-summary">${j.summary}</p>` : ""}
+        ${j.role ? `<p class="level-role">${j.role}</p>` : ""}
         ${meta ? `<p class="level-meta">${meta}</p>` : ""}
         <span class="level-cta">${j.cta} <span class="arrow">↗</span></span>
       </a>
